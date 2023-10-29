@@ -1,4 +1,4 @@
-import {less} from './utils.mjs';
+import {less} from '../utils.mjs';
 
 export function merge(data, lowIndex, mid, heightIndex, result){
     let index = lowIndex;
@@ -21,18 +21,21 @@ export function merge(data, lowIndex, mid, heightIndex, result){
     }
 }
 
-export function descendingMergeSort(data) {
+export function descendingMergeSort(data, frameMaker) {
     const result = [];
-    sort(data, 0, data.length - 1, result);
-    return data;
+    sort(data, 0, data.length - 1, result, frameMaker);
+    return {data, frameMaker};
 }
 
-function sort(data, lowIndex, heightIndex, result) {
+function sort(data, lowIndex, heightIndex, result, frameMaker) {
     if (heightIndex <= lowIndex) {
         return;
     }
+
+    frameMaker && frameMaker(data);
+
     const mid = lowIndex + (heightIndex - lowIndex) / 2;
-    sort(data, lowIndex, mid, result);
-    sort(data, mid + 1, heightIndex, result);
-    merge(data, lowIndex, mid, heightIndex, result);
+    sort(data, lowIndex, mid, result, frameMaker);
+    sort(data, mid + 1, heightIndex, result, frameMaker);
+    merge(data, lowIndex, mid, heightIndex, result, frameMaker);
 }

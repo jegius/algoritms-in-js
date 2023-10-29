@@ -1,7 +1,39 @@
 import * as fs from 'fs';
+import {createInterface} from 'readline';
+import * as path from 'path';
 
 export function less(first, second) {
     return first <= second;
+}
+
+export const SORT_TYPE = {
+    select: Symbol('selectSort'),
+    insert: Symbol('insert'),
+    shell: Symbol('shell'),
+    descendingMergeSort: Symbol('descendingMergeSort'),
+    ascendingMergeSort: Symbol('ascendingMergeSort'),
+    quickSort: Symbol('quickSort'),
+    threeWayQuickSort: Symbol('threeWayQuickSort'),
+}
+
+export const ALGORITHMS_DIRECTORIES = {
+    [SORT_TYPE.shell]: './algorithms/sort-playground/shell-sort',
+    [SORT_TYPE.insert]: './algorithms/sort-playground/insert-sort',
+    [SORT_TYPE.select]: './algorithms/sort-playground/select-sort',
+    [SORT_TYPE.descendingMergeSort]: './algorithms/sort-playground/descending-merge-sort',
+    [SORT_TYPE.ascendingMergeSort]: './algorithms/sort-playground/ascending-merge-sort',
+    [SORT_TYPE.quickSort]: './algorithms/sort-playground/quick-sort',
+    [SORT_TYPE.threeWayQuickSort]: './algorithms/sort-playground/quick-three-way',
+}
+
+export const STRING_TO_SYMBOL = {
+    ['insert']: SORT_TYPE.insert,
+    ['select']: SORT_TYPE.select,
+    ['shell']: SORT_TYPE.shell,
+    ['descendingMergeSort']: SORT_TYPE.descendingMergeSort,
+    ['ascendingMergeSort']: SORT_TYPE.ascendingMergeSort,
+    ['quickSort']: SORT_TYPE.quickSort,
+    ['threeWayQuickSort']: SORT_TYPE.threeWayQuickSort,
 }
 
 export function swap(comparable, firstPointer, secondPointer) {
@@ -19,12 +51,16 @@ export function show(comparable) {
 export function generateData(size = 10) {
     return new Array(size)
         .fill(0)
-        .map(() => Math.round(Math.random() * 1000) / Math.floor(Math.random() * 10));
+        .map(() => {
+            const number = Math.round(Math.random() * 1000) / Math.floor(Math.random() * 10);
+            return number === Infinity || isNaN(number) ? Math.random() * 10 : number;
+        });
 }
 
 
-export function carry(func) {
-    return (newArguments) => func(newArguments);
+export function carry(func, algorithm, makeFrames = false) {
+    const frameMaker = makeFrames ? prepareJson(algorithm) : null;
+    return (newArguments) => func(newArguments, frameMaker);
 }
 
 export function sort(sortAlgorithm, data) {
@@ -32,13 +68,12 @@ export function sort(sortAlgorithm, data) {
 }
 
 export function isSorted(comparable) {
-    return comparable.reduce((result, second, index) => {
-        const isEndOfArray = !comparable[index + 1];
-        if (!result || isEndOfArray) {
-            return result;
+    for (let i = 0, len = comparable.length - 1; i < len; i++) {
+        if (comparable[i] > comparable[i + 1]) {
+            return false;
         }
-        return less(second, comparable[index + 1]);
-    }, true);
+    }
+    return true;
 }
 
 export function compose(...functions) {
@@ -56,7 +91,6 @@ export function timeTaken(fn) {
 }
 
 export const EXAMPLE = ['S', 'O', 'R', 'T', 'E', 'X', 'A', 'P', 'L', 'E'];
-export const SECOND_EXAMPLE = [22, 1, 43, 142, 32, 53, 66, 123];
 
 export function logResult(sortType, items, time, isSorted) {
     return `
@@ -68,19 +102,194 @@ export function logResult(sortType, items, time, isSorted) {
 ================================\n`;
 }
 
-const LOG_FILE_NAME = './algoritms/sort-playground/log/sorting_log.txt';
+const LOG_FILE_NAME = './algorithms/sort-playground/log/sorting_log.txt';
 
 export function logAlgorithmResult(sortType) {
     return function ({result, time}) {
-        const resultLog = logResult(sortType.toString(), result.length, time, isSorted(result));
+        const resultLog = logResult(sortType.toString(), result.data.length, time, isSorted(result));
         console.log(resultLog);
         createFileWithNameAndWriteString(LOG_FILE_NAME, resultLog);
     };
+}
+
+export function prepareJson(algorithm) {
+    const frames = [];
+    return function (data) {
+        if (data) {
+            frames.push(printGraph(data));
+        } else {
+            return {
+                path: ALGORITHMS_DIRECTORIES[algorithm],
+                frames
+            };
+        }
+    }
+}
+
+export function saveFrames({result, time}) {
+    if (result.frameMaker) {
+        const {path, frames} = result.frameMaker();
+        createFileWithNameAndWriteString(`${path}/${result.data.length}_frames.json`, JSON.stringify({frames}))
+    }
+    return {result, time};
+}
+
+export function compare(first, second) {
+    if (first > second) {
+        return 1;
+    } else if (first < second) {
+        return -1;
+    } else {
+        return 0;
+    }
+}
+
+export function printGraph(data) {
+    const MAX_HEIGHT = 10;
+    const MAX_WIDTH = 100;
+    const GRAPH_SPACE = ' ';
+    const GRAPH_BAR = '|';
+    const AXIS_SYMBOL = '_';
+
+    const maxValueInData = Math.max(...data);
+
+    let scaledData = data.length > MAX_WIDTH ? data.reduce((acc, currentValue, index) => {
+        if (index % Math.floor(data.length / MAX_WIDTH) === 0) {
+            let sum = 0;
+            for (let i = index; i < index + Math.floor(data.length / MAX_WIDTH); i++) {
+                sum = sum + data[i];
+            }
+            acc.push(sum / Math.floor(data.length / MAX_WIDTH));
+        }
+        return acc;
+    }, []) : [...data];
+
+    let scaledAndRoundedData = scaledData.map(value => Math.round(value / maxValueInData * MAX_HEIGHT));
+
+    let emptyGraph = Array(MAX_HEIGHT).fill('').map(() => Array(scaledAndRoundedData.length).fill(GRAPH_SPACE));
+    let graphWithBars = scaledAndRoundedData.reduce((graph, value, index) => {
+        for(let height = 0; height < value; height++){
+            graph[MAX_HEIGHT - 1 - height][index] = GRAPH_BAR;
+        }
+        return graph;
+    }, emptyGraph);
+
+    graphWithBars.push(Array(scaledAndRoundedData.length).fill(AXIS_SYMBOL));
+    return graphWithBars.map(line => line.join('')).join('\n');
 }
 
 export function createFileWithNameAndWriteString(fileName, content) {
     fs.appendFile(fileName, content, function (error) {
         if (error) throw error;
         console.log('Content added to file successfully.');
+    });
+}
+
+function readAndParseJSON(filePath) {
+    try {
+        const data = fs.readFileSync(filePath, 'utf-8');
+        return JSON.parse(data);
+    } catch (error) {
+        console.error(`Ошибка при чтении или парсинге файла: ${error}`);
+    }
+}
+
+const EXIT_SIGN = 3;
+
+const VISUALIZATION_TYPE = new Map([
+    [1, 'Пошаговое'],
+    [2, 'Непрерывное'],
+    [EXIT_SIGN, 'Выйти'],
+])
+
+const ACTIONS = new Map([
+    [1, 'Вперед'],
+    [2, 'Назад'],
+    [EXIT_SIGN, 'Выйти'],
+])
+
+export async function visualization(path){
+    const dataToVisualization = readAndParseJSON(path);
+    if (!dataToVisualization?.frames) {
+        console.error('Incorrect JSON format!');
+    }
+    const readlineInterface = createInterface({
+        input: process.stdin,
+        output: process.stdout
+    });
+
+    await permanentVisualization(readlineInterface, dataToVisualization);
+
+}
+
+function permanentVisualization(readlineInterface, dataToVisualization) {
+    return new Promise((resolve) => {
+        const {frames} = dataToVisualization;
+        let currentIndex = 0;
+
+        const interval = setInterval(() => {
+            console.clear();
+            console.log(frames[currentIndex++])
+
+            if (!frames[currentIndex++]) {
+                clearInterval(interval);
+                resolve();
+            }
+
+        })
+    })
+}
+
+
+
+export async function chooseVisualizationType(readlineInterface, dataToVisualizationPath) {
+    readlineInterface.question('Выберите формат воспроизведения: ', async (userInput) => {
+        for(const [key, text] of VISUALIZATION_TYPE.entries()) {
+            console.log(`${key}: ${text}`);
+        }
+        const input = parseInt(userInput);
+
+        if (VISUALIZATION_TYPE.has(input)){
+            console.clear();
+            await visualization(dataToVisualizationPath)
+        } else if(input === EXIT_SIGN){
+            console.log('Выход из приложения');
+        } else {
+            console.log('Невозможное действие');
+            await chooseVisualizationType(readlineInterface, dataToVisualizationPath)
+        }
+    });
+}
+
+export function getJsonFiles(directoryPath) {
+    console.log(directoryPath)
+    const filesAndDirectories = fs.readdirSync(directoryPath);
+    const jsonFiles = filesAndDirectories.filter(fileName => path.extname(fileName) === '.json');
+    return jsonFiles.map(fileName => path.join(directoryPath, fileName));
+}
+
+export function promptUserToSelectFile(filePaths, visualizationCallback) {
+    const readlineInterface = createInterface({
+        input: process.stdin,
+        output: process.stdout
+    });
+
+    if (!filePaths.length) {
+        console.log('Отсутствуют JSON файлы для воспроизведения');
+    }
+
+    filePaths.forEach((filePath, index) => {
+        console.log(`${index + 1}: ${filePath}`);
+    });
+
+    readlineInterface.question('Выберите файл, введя его номер: ', (userInput) => {
+        const selectedFile = filePaths[parseInt(userInput) - 1];
+
+        if (selectedFile) {
+            console.log(`Вы выбрали: ${selectedFile}`);
+            visualizationCallback(readlineInterface, selectedFile);
+        } else {
+            console.log('Введен недопустимый номер.');
+        }
     });
 }

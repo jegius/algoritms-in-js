@@ -1,5 +1,6 @@
-import {insertSortBody} from './insertSort.mjs';
-export function shellSort(data) {
+import {insertSortBody} from '../insert-sort/insertSort.mjs';
+
+export function shellSort(data, frameMaker) {
     const size = data.length;
     let gap = 1;
     const PARTS = 3;
@@ -13,5 +14,6 @@ export function shellSort(data) {
         gap = Math.floor(gap / PARTS);
     }
 
-    return data;
+    frameMaker && frameMaker(data);
+    return {data, frameMaker};
 }

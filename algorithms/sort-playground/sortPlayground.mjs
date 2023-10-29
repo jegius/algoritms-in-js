@@ -4,21 +4,19 @@ import {
     EXAMPLE,
     generateData,
     logAlgorithmResult,
+    saveFrames,
+    SORT_TYPE,
+    STRING_TO_SYMBOL,
     timeTaken
 } from './utils.mjs';
-import {shellSort} from './shellSort.mjs';
-import {selectSort} from './selectSort.mjs';
-import {insertSort} from './insertSort.mjs';
-import {descendingMergeSort} from './descendingMergeSort.mjs';
-import {ascendingMergeSort} from './ascendingMergeSort.mjs';
+import {shellSort} from './shell-sort/shellSort.mjs';
+import {selectSort} from './select-sort/selectSort.mjs';
+import {insertSort} from './insert-sort/insertSort.mjs';
+import {descendingMergeSort} from './descending-merge-sort/descendingMergeSort.mjs';
+import {ascendingMergeSort} from './ascending-merge-sort/ascendingMergeSort.mjs';
+import {quickSort} from './quick-sort/quickSort.mjs';
+import {threeWayQuickSort} from './quick-three-way/threeWayQuickSort.mjs';
 
-const SORT_TYPE = {
-    select: Symbol('selectSort'),
-    insert: Symbol('insert'),
-    shell: Symbol('shell'),
-    descendingMergeSort: Symbol('descendingMergeSort'),
-    ascendingMergeSort: Symbol('ascendingMergeSort')
-}
 
 const SORT_FUNCTION = new Map([
     [SORT_TYPE.insert, insertSort],
@@ -26,15 +24,20 @@ const SORT_FUNCTION = new Map([
     [SORT_TYPE.shell, shellSort],
     [SORT_TYPE.descendingMergeSort, descendingMergeSort],
     [SORT_TYPE.ascendingMergeSort, ascendingMergeSort],
-])
+    [SORT_TYPE.quickSort, quickSort],
+    [SORT_TYPE.threeWayQuickSort, threeWayQuickSort],
+]);
 
-function run(arg = EXAMPLE, sortType = SORT_TYPE.shell){
-    const curriedSort = carry(SORT_FUNCTION.get(sortType))
+function run(arg = EXAMPLE, sortType = SORT_TYPE.shell, makeFrames = false){
+    const curriedSort = carry(SORT_FUNCTION.get(sortType), sortType, makeFrames)
     compose(
         timeTaken(curriedSort),
+        saveFrames,
         logAlgorithmResult(sortType),
     )(arg)
 
 }
 
-run(generateData(1000), SORT_TYPE.ascendingMergeSort);
+const [, , size, type, makeFrameShot = false] = process.argv;
+
+run(generateData(Number(size)), STRING_TO_SYMBOL[type], makeFrameShot);
