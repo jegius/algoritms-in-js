@@ -16,6 +16,7 @@ import {descendingMergeSort} from './descending-merge-sort/descendingMergeSort.m
 import {ascendingMergeSort} from './ascending-merge-sort/ascendingMergeSort.mjs';
 import {quickSort} from './quick-sort/quickSort.mjs';
 import {threeWayQuickSort} from './quick-three-way/threeWayQuickSort.mjs';
+import {heapSort} from './heap-sort/HeapSort.mjs';
 
 
 const SORT_FUNCTION = new Map([
@@ -26,6 +27,7 @@ const SORT_FUNCTION = new Map([
     [SORT_TYPE.ascendingMergeSort, ascendingMergeSort],
     [SORT_TYPE.quickSort, quickSort],
     [SORT_TYPE.threeWayQuickSort, threeWayQuickSort],
+    [SORT_TYPE.heapSort, heapSort],
 ]);
 
 function run(arg = EXAMPLE, sortType = SORT_TYPE.shell, makeFrames = false){

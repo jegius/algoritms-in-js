@@ -16,6 +16,8 @@
     "select-sort-frame": "node algorithms/sort-playground/sortPlayground.mjs 10000 select true",
     "quickSort-sort": "node algorithms/sort-playground/sortPlayground.mjs 10000 quickSort",
     "quickSort-sort-frame": "node algorithms/sort-playground/sortPlayground.mjs 10000 quickSort true",
+    "heapSort-sort": "node algorithms/sort-playground/sortPlayground.mjs 10000 heapSort",
+    "heapSort-sort-frame": "node algorithms/sort-playground/sortPlayground.mjs 10000 heapSort true",
     "visualizate-quickSort-sort": "node algorithms/sort-playground/visualization.mjs quickSort",
     "visualizate-ascending-merge-sort": "node algorithms/sort-playground/visualization.mjs ascendingMergeSort"
   }

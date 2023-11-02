@@ -14,6 +14,7 @@ export const SORT_TYPE = {
     ascendingMergeSort: Symbol('ascendingMergeSort'),
     quickSort: Symbol('quickSort'),
     threeWayQuickSort: Symbol('threeWayQuickSort'),
+    heapSort: Symbol('heapSort'),
 }
 
 export const ALGORITHMS_DIRECTORIES = {
@@ -24,6 +25,7 @@ export const ALGORITHMS_DIRECTORIES = {
     [SORT_TYPE.ascendingMergeSort]: './algorithms/sort-playground/ascending-merge-sort',
     [SORT_TYPE.quickSort]: './algorithms/sort-playground/quick-sort',
     [SORT_TYPE.threeWayQuickSort]: './algorithms/sort-playground/quick-three-way',
+    [SORT_TYPE.heapSort]: './algorithms/sort-playground/heap-sort',
 }
 
 export const STRING_TO_SYMBOL = {
@@ -34,6 +36,7 @@ export const STRING_TO_SYMBOL = {
     ['ascendingMergeSort']: SORT_TYPE.ascendingMergeSort,
     ['quickSort']: SORT_TYPE.quickSort,
     ['threeWayQuickSort']: SORT_TYPE.threeWayQuickSort,
+    ['heapSort']: SORT_TYPE.heapSort,
 }
 
 export function swap(comparable, firstPointer, secondPointer) {
