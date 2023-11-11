@@ -4,7 +4,7 @@
   "scripts": {
     "run-three-way-quick-sort": "node algorithms/sort-playground/sortPlayground.mjs 10000 threeWayQuickSort",
     "run-three-way-quick-sort-frame": "node algorithms/sort-playground/sortPlayground.mjs 10000 threeWayQuickSort true",
-    "ascending-merge-sort": "node algorithms/sort-playground/sortPlayground.mjs 1000000 ascendingMergeSort",
+    "ascending-merge-sort": "node algorithms/sort-playground/sortPlayground.mjs 10000000 ascendingMergeSort",
     "ascending-merge-sort-frame": "node algorithms/sort-playground/sortPlayground.mjs 100000 ascendingMergeSort true",
     "descending-merge-sort": "node algorithms/sort-playground/sortPlayground.mjs 10000 descendingMergeSort",
     "descending-merge-sort-frame": "node algorithms/sort-playground/sortPlayground.mjs 10000 descendingMergeSort true",
@@ -16,7 +16,7 @@
     "select-sort-frame": "node algorithms/sort-playground/sortPlayground.mjs 10000 select true",
     "quickSort-sort": "node algorithms/sort-playground/sortPlayground.mjs 10000 quickSort",
     "quickSort-sort-frame": "node algorithms/sort-playground/sortPlayground.mjs 10000 quickSort true",
-    "heapSort-sort": "node algorithms/sort-playground/sortPlayground.mjs 10000 heapSort",
+    "heapSort-sort": "node algorithms/sort-playground/sortPlayground.mjs 10000000 heapSort",
     "heapSort-sort-frame": "node algorithms/sort-playground/sortPlayground.mjs 10000 heapSort true",
     "visualizate-quickSort-sort": "node algorithms/sort-playground/visualization.mjs quickSort",
     "visualizate-ascending-merge-sort": "node algorithms/sort-playground/visualization.mjs ascendingMergeSort"
