@@ -1,0 +1,29 @@
+{
+  "name": "algorithm-tasks",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "fibonacci": "node fibanacchi/fibanacchiExample.mjs",
+    "memoized-fibonacci": "node fibanacchi/memoizedFibbonachiExample.mjs",
+    "grid-traveler": "node gridTraveler/gridTravelerExample.mjs",
+    "memoized-grid-traveler": "node gridTraveler/memoizedGridTravelerExample.mjs",
+    "can-sum": "node canSum/canSumExample.mjs",
+    "how-sum": "node howSum/howSumExample.mjs",
+    "best-sum": "node bestSum/bestSumExample.mjs",
+    "can-construct": "node canConstruct/canConstructExample.mjs",
+    "count-construct": "node countConstruct/countConstructExample.mjs",
+    "all-construct": "node allConstruct/allContructExample.mjs",
+    "fibanacci-with-table": "node fibanacciWithTable/fibanacchiWithTableExample.mjs",
+    "grid-tavaler-with-table": "node tableGridTraveler/tableGridTravelerExample.mjs",
+    "can-sum-with-table": "node canSumWithTable/canSumWithTableExample.mjs",
+    "two-sum": "node twoSum/twoSumExample.mjs",
+    "how-sum-with-table": "node howSumWithTable/howSumWithTableExample.mjs",
+    "best-sum-with-table": "node bestSumWithTabulation/bestSumWithTabulationExample.mjs",
+    "can-construct-with-table": "node canConstructWithTabulation/canCounstructWithTabulationExample.mjs",
+    "count-construct-with-table": "node countConstructWithTable/countConstructWithTableExample.mjs",
+    "all-construct-with-table": "node allConstructWithTable/allConstructWithTableExample.mjs"
+  },
+  "author": "",
+  "license": "ISC"
+}

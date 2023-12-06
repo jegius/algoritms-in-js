@@ -1,0 +1,18 @@
+{
+  "name": "data-structures",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "table-test": "node table/symbolTableExample.mjs",
+    "min-heap-test": "node min-indexed-binary-heap/indexMinPqExample.mjs",
+    "hash-table-test": "node hash-table/hashTableExample.mjs",
+    "black-red-tree-test": "node black-red-tree/blackRedTreeExample.mjs",
+    "binary-search-tree-test": "node binary-tree/binaryTreeExample.mjs",
+    "binary-heap-test": "node binary-heap/priorityQueueExample.mjs",
+    "two-three-tree-test": "node 2-3-binary-tree/twoThreeTreeExample.mjs",
+    "two-three-four-tree-test": "node 2-3-4-binary-tree/twoThreeFourBinaryTreeExample.mjs"
+  },
+  "author": "",
+  "license": "ISC"
+}
