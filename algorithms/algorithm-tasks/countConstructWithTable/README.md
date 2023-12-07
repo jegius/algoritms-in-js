@@ -1,4 +1,4 @@
-[countConstruct tabulation](https://www.youtube.com/watch?v=oBt53YbR9Kk&t=16686s)
+[countConstruct tabulation time code](https://www.youtube.com/watch?v=oBt53YbR9Kk&t=16686s)
 
 [Назад к содержанию](../README.md)
 

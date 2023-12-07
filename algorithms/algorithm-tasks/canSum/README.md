@@ -1,4 +1,4 @@
-[canSum memoization](https://www.youtube.com/watch?v=oBt53YbR9Kk&t=4196s)
+[canSum memoization time code](https://www.youtube.com/watch?v=oBt53YbR9Kk&t=4196s)
 
 [Назад к содержанию](../README.md)
 

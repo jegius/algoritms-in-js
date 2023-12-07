@@ -1,4 +1,4 @@
-[bestSum memoization](https://www.youtube.com/watch?v=oBt53YbR9Kk&t=6726s)
+[bestSum memoization time code](https://www.youtube.com/watch?v=oBt53YbR9Kk&t=6726s)
 
 [Назад к содержанию](../README.md)
 

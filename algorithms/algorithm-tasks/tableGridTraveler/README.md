@@ -1,4 +1,4 @@
-[gridTraveler tabulation](https://www.youtube.com/watch?v=oBt53YbR9Kk&t=12137s)
+[gridTraveler tabulation time code](https://www.youtube.com/watch?v=oBt53YbR9Kk&t=12137s)
 
 [Назад к содержанию](../README.md)
 

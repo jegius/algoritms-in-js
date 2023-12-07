@@ -1,4 +1,4 @@
-[allConstruct memoization](https://www.youtube.com/watch?v=oBt53YbR9Kk&t=10050s)
+[allConstruct memoization time code](https://www.youtube.com/watch?v=oBt53YbR9Kk&t=10050s)
 
 [Назад к содержанию](../README.md)
 

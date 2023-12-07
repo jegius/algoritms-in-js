@@ -1,4 +1,4 @@
-[bestSum tabulation](https://www.youtube.com/watch?v=oBt53YbR9Kk&t=14841s)
+[bestSum tabulation time code](https://www.youtube.com/watch?v=oBt53YbR9Kk&t=14841s)
 
 [Назад к содержанию](../README.md)
 

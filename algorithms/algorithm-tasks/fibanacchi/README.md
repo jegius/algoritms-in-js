@@ -1,4 +1,4 @@
-[fib memoization](https://www.youtube.com/watch?v=oBt53YbR9Kk&t=210s)
+[fib memoization time code](https://www.youtube.com/watch?v=oBt53YbR9Kk&t=210s)
 
 [Назад к содержанию](../README.md)
 

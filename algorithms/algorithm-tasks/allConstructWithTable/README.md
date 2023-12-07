@@ -1,4 +1,4 @@
-[allConstruct tabulation](https://www.youtube.com/watch?v=oBt53YbR9Kk&t=17423s)
+[allConstruct tabulation time code](https://www.youtube.com/watch?v=oBt53YbR9Kk&t=17423s)
 
 [Назад к содержанию](../README.md)
 

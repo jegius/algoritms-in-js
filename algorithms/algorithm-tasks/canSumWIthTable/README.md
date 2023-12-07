@@ -1,4 +1,4 @@
-[canSum tabulation](https://www.youtube.com/watch?v=oBt53YbR9Kk&t=13079s)
+[canSum tabulation time code](https://www.youtube.com/watch?v=oBt53YbR9Kk&t=13079s)
 
 [Назад к содержанию](../README.md)
 

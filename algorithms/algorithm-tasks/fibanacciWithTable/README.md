@@ -1,4 +1,4 @@
-[fib tabulation](https://www.youtube.com/watch?v=oBt53YbR9Kk&t=11453s)
+[fib tabulation time code](https://www.youtube.com/watch?v=oBt53YbR9Kk&t=11453s)
 
 [Назад к содержанию](../README.md)
 

@@ -1,4 +1,4 @@
-[canConstruct tabulation](https://www.youtube.com/watch?v=oBt53YbR9Kk&t=15650s)
+[canConstruct tabulation time code](https://www.youtube.com/watch?v=oBt53YbR9Kk&t=15650s)
 
 [Назад к содержанию](../README.md)
 

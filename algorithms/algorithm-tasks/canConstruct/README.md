@@ -1,4 +1,4 @@
-[canConstruct memoization](https://www.youtube.com/watch?v=oBt53YbR9Kk&t=7965s)
+[canConstruct memoization time code](https://www.youtube.com/watch?v=oBt53YbR9Kk&t=7965s)
 
 [Назад к содержанию](../README.md)
 
