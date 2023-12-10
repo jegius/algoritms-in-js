@@ -18,14 +18,14 @@ export const SORT_TYPE = {
 }
 
 export const ALGORITHMS_DIRECTORIES = {
-    [SORT_TYPE.shell]: './algorithms/sort-playground/shell-sort',
-    [SORT_TYPE.insert]: './algorithms/sort-playground/insert-sort',
-    [SORT_TYPE.select]: './algorithms/sort-playground/select-sort',
-    [SORT_TYPE.descendingMergeSort]: './algorithms/sort-playground/descending-merge-sort',
-    [SORT_TYPE.ascendingMergeSort]: './algorithms/sort-playground/ascending-merge-sort',
-    [SORT_TYPE.quickSort]: './algorithms/sort-playground/quick-sort',
-    [SORT_TYPE.threeWayQuickSort]: './algorithms/sort-playground/quick-three-way',
-    [SORT_TYPE.heapSort]: './algorithms/sort-playground/heap-sort',
+    [SORT_TYPE.shell]: './shell-sort',
+    [SORT_TYPE.insert]: './insert-sort',
+    [SORT_TYPE.select]: './select-sort',
+    [SORT_TYPE.descendingMergeSort]: './descending-merge-sort',
+    [SORT_TYPE.ascendingMergeSort]: './ascending-merge-sort',
+    [SORT_TYPE.quickSort]: './quick-sort',
+    [SORT_TYPE.threeWayQuickSort]: './quick-three-way',
+    [SORT_TYPE.heapSort]: './heap-sort',
 }
 
 export const STRING_TO_SYMBOL = {
@@ -105,7 +105,7 @@ export function logResult(sortType, items, time, isSorted) {
 ================================\n`;
 }
 
-const LOG_FILE_NAME = './algorithms/sort-playground/log/sorting_log.txt';
+const LOG_FILE_NAME = './log/sorting_log.txt';
 
 export function logAlgorithmResult(sortType) {
     return function ({result, time}) {
@@ -202,12 +202,6 @@ const EXIT_SIGN = 3;
 const VISUALIZATION_TYPE = new Map([
     [1, 'Пошаговое'],
     [2, 'Непрерывное'],
-    [EXIT_SIGN, 'Выйти'],
-])
-
-const ACTIONS = new Map([
-    [1, 'Вперед'],
-    [2, 'Назад'],
     [EXIT_SIGN, 'Выйти'],
 ])
 

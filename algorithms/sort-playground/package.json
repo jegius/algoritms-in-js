@@ -1,0 +1,24 @@
+{
+  "name": "algoritms-in-js",
+  "version": "1.0.0",
+  "scripts": {
+    "run-three-way-quick-sort": "node sortPlayground.mjs 10000 threeWayQuickSort",
+    "run-three-way-quick-sort-frame": "node sortPlayground.mjs 10000 threeWayQuickSort true",
+    "ascending-merge-sort": "node sortPlayground.mjs 10000000 ascendingMergeSort",
+    "ascending-merge-sort-frame": "node sortPlayground.mjs 100000 ascendingMergeSort true",
+    "descending-merge-sort": "node sortPlayground.mjs 10000 descendingMergeSort",
+    "descending-merge-sort-frame": "node sortPlayground.mjs 10000 descendingMergeSort true",
+    "shell-sort": "node sortPlayground.mjs 10000 shell",
+    "shell-sort-frame": "node sortPlayground.mjs 10000 shell true",
+    "insert-sort": "node sortPlayground.mjs 10000 insert",
+    "insert-sort-frame": "node sortPlayground.mjs 10000 insert true",
+    "select-sort": "node sortPlayground.mjs 10000 select",
+    "select-sort-frame": "node sortPlayground.mjs 10000 select true",
+    "quickSort-sort": "node sortPlayground.mjs 10000 quickSort",
+    "quickSort-sort-frame": "node sortPlayground.mjs 10000 quickSort true",
+    "heapSort-sort": "node sortPlayground.mjs 10000000 heapSort",
+    "heapSort-sort-frame": "node sortPlayground.mjs 10000 heapSort true",
+    "visualizate-quickSort-sort": "node visualization.mjs quickSort",
+    "visualizate-ascending-merge-sort": "node visualization.mjs ascendingMergeSort"
+  }
+}
